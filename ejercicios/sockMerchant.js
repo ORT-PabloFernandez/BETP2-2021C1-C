@@ -11,8 +11,22 @@
  * @return {Number} 
  */
 const sockMerchant = function(colorSocks){
-    
-}
+ colorSocks.sort();
+ let color = null;
+ let totalPares = 0;
+ let totalColorMedias=0;
+ for (var i = 0; i < colorSocks.length; i++){
+     if (colorSocks[i] != color){
+        totalPares = totalPares + Math.floor(totalColorMedias/2);
+        totalColorMedias = 1;
+        color = colorSocks[i];
+     }
+     else{
+         totalColorMedias = totalColorMedias + 1;
+     };
+ };
+ return totalPares;   
+};
 
 // TESTS TDD
 console.log(sockMerchant([1,2,1,2,1,3,2]) === 2);
